@@ -1,4 +1,5 @@
 /* Chart y-axis */
+
 .d3-yaxis-group path, .d3-yaxis-group line {
   fill: none;
   stroke: #8b8b8b;
