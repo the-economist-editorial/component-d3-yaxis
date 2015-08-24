@@ -45,7 +45,7 @@ export default class D3yAxis extends React.Component {
     const xScale = config.xscale;
     const orient = config.orient;
     this.props.axis
-      .scale(yScale)
+      .scale(xScale)
       .orient(orient)
       .tickPadding(5)
       .ticks(5)
