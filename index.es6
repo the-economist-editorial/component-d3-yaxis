@@ -27,6 +27,9 @@ export default class D3yAxis extends React.Component {
     };
   }
 
+  componentWillMount() {
+  }
+
   // COMPONENT DID MOUNT
   componentDidMount() {
     this.setYAxisConfig();
@@ -43,8 +46,9 @@ export default class D3yAxis extends React.Component {
   
   setYAxisConfig() {
     const config = this.props.config;
-    const yScale = config.yscale;
+    const yScale = config.scale;
     const orient = config.orient;
+    //debugger;
     this.props.axis
       .scale(yScale)
       .orient(orient)
@@ -54,11 +58,11 @@ export default class D3yAxis extends React.Component {
   }
 
   getAxisGroupTransformString() {
-    let height = 0;
-    if (this.props.config.orient === 'bottom') {
-      height = this.props.config.bounds.height;
+    let width = 0;
+    if (this.props.config.orient === 'right') {
+      width = this.props.config.bounds.width;
     }
-    return 'translate(0,' + height + ')';
+    return 'translate(' + width + ', 0)';
   }
 
   // UPDATE Y-AXIS
@@ -66,7 +70,7 @@ export default class D3yAxis extends React.Component {
  updateYAxis() {
    const axisG = d3.select('.d3-yaxis-group');
    const duration = this.props.config.duration;
-   const transform = this.getAxisGroupTransformString();
+   const transform = this.getAxisGroupTransformString();  
     // I'm trying to chain the transitions if the axis moves
     // from bottom to top, as well as changing scale. This
     // is only partly successful, because I also need to address
@@ -90,9 +94,7 @@ export default class D3yAxis extends React.Component {
 
   // RENDER
   render() {
-    // NB: no transform on initial display
     // Axis group
-
     return (
       <g className="d3-yaxis-group" ref="axisGroup"/>
     );
