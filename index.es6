@@ -53,6 +53,7 @@ export default class D3yAxis extends React.Component {
       .scale(yScale)
       .orient(orient)
       .tickPadding(5)
+      // Ticks need to be at an appropriate 'density', rather than a fixed number...
       .ticks(5)
       .tickSize(tickSize);
   }
